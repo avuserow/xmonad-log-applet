@@ -1,17 +1,23 @@
 plugindir = $(PLUGIN_DIR)
-plugin_PROGRAMS = xmonad-log-applet
+plugin_LTLIBRARIES = xmonad-log-applet.la
 
-xmonad_log_applet_SOURCES = main.c
+xmonad_log_applet_la_SOURCES = main.c
 
-xmonad_log_applet_CPPFLAGS = \
+xmonad_log_applet_la_CPPFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
 	$(LIBPANEL_CFLAGS)
 
-xmonad_log_applet_LDADD = \
+xmonad_log_applet_la_LIBADD = \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBPANEL_LIBS)
+
+xmonad_log_applet_la_LDFLAGS = \
+	-avoid-version \
+	-module \
+	-no-undefined \
+	-export-symbols-regex '^xfce_panel_module_(preinit|init|construct)'
 
 appletdir = $(LIBPANEL_APPLET_DIR)
 if PANEL_GNOME

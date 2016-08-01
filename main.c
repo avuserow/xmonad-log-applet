@@ -162,6 +162,5 @@ MATE_PANEL_APPLET_OUT_PROCESS_FACTORY(
     NULL);
 #endif
 #ifdef PANEL_XFCE4
-XFCE_PANEL_PLUGIN_REGISTER_EXTERNAL(
-    xmonad_log_applet_construct);
+XFCE_PANEL_PLUGIN_REGISTER (xmonad_log_applet_construct);
 #endif
